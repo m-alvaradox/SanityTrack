@@ -1,0 +1,5 @@
+export default function MiniChart({ data, dataKey, color = '#2d7a78', suffix = '' }) {
+  const values = data.map((item) => item[dataKey]); const max = Math.max(...values, 1); const min = Math.min(...values); const range = max - min || 1
+  const points = values.map((value, index) => `${(index / (values.length - 1)) * 100},${92 - ((value - min) / range) * 72}`).join(' ')
+  return <div className="chart-wrap"><svg className="line-chart" viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="Gráfico histórico"><line x1="0" y1="92" x2="100" y2="92" className="axis" /><polyline points={points} fill="none" stroke={color} strokeWidth="3" vectorEffect="non-scaling-stroke" />{values.map((value, index) => <circle key={data[index].hour} cx={(index / (values.length - 1)) * 100} cy={92 - ((value - min) / range) * 72} r="1.8" fill={color} />)}</svg><div className="chart-labels">{data.map((item) => <span key={item.hour}>{item.hour}</span>)}</div><div className="chart-range"><span>{min}{suffix}</span><span>{max}{suffix}</span></div></div>
+}
