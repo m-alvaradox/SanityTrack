@@ -12,6 +12,8 @@ Sensores → ESP32 → WiFi → MQTT → HiveMQ → subscriber/backend → Fireb
 
 En esta etapa, la aplicación usa datos simulados detrás de `dataService`. Las páginas nunca dependen directamente del archivo mock, lo que permite reemplazar ese servicio por Firebase sin reescribir la interfaz.
 
+Para las pruebas del prototipo también existe un modo MQTT WebSocket opcional. Al activarlo, la UI escucha el broker público y conserva los mocks como estado inicial y respaldo.
+
 ## Tecnologías
 
 - React y Vite
@@ -64,9 +66,14 @@ VITE_FIREBASE_PROJECT_ID=
 VITE_FIREBASE_STORAGE_BUCKET=
 VITE_FIREBASE_MESSAGING_SENDER_ID=
 VITE_FIREBASE_APP_ID=
+VITE_MQTT_ENABLED=false
+VITE_MQTT_BROKER_URL=wss://mqtt-dashboard.com:8884/mqtt
+VITE_MQTT_TOPIC=espol/sanitytrack/bathroom1/data
 ```
 
 No se incluyen credenciales ni claves ficticias. `src/services/firebase.js` centraliza la configuración, pero el SDK y la lectura real todavía no están habilitados. Sin variables, toda la aplicación continúa funcionando con datos simulados.
+
+Para probar directamente el broker público, cambia `VITE_MQTT_ENABLED=true` en tu archivo `.env` y reinicia Vite. Este modo valida el JSON recibido antes de actualizar `bathroom1` y muestra el estado de conexión en el encabezado. Se considera exclusivamente una ayuda de desarrollo.
 
 ## Integración MQTT prevista
 

@@ -2,6 +2,10 @@
 
 :root { font-family: 'DM Sans', sans-serif; color: #243b53; background: #f4f7f9; font-synthesis: none; --navy: #102a43; --teal: #287c79; --border: #dfe8ed; --muted: #718096; }
 * { box-sizing: border-box; }
+@keyframes pulse { 50% { opacity: .3; } }
+.connection.connecting i { background: #d99a45; animation: pulse 1.2s infinite; }
+.connection.offline i, .connection.error i { background: #d76355; }
+.connection.mock i { background: #8196a3; }
 body { margin: 0; min-width: 320px; min-height: 100vh; }
 button, input { font: inherit; }
 button { cursor: pointer; }

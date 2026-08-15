@@ -12,6 +12,7 @@
   "dependencies": {
     "@vitejs/plugin-react": "latest",
     "lucide-react": "latest",
+    "mqtt": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "latest",
