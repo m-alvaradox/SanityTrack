@@ -75,6 +75,12 @@ No se incluyen credenciales ni claves ficticias. `src/services/firebase.js` cent
 
 Para probar directamente el broker público, cambia `VITE_MQTT_ENABLED=true` en tu archivo `.env` y reinicia Vite. Este modo valida el JSON recibido antes de actualizar `bathroom1` y muestra el estado de conexión en el encabezado. Se considera exclusivamente una ayuda de desarrollo.
 
+La conectividad del broker también puede comprobarse sin abrir la interfaz. El comando se suscribe, publica un mensaje de prueba no retenido y confirma su recepción:
+
+```bash
+npm run mqtt:test
+```
+
 ## Integración MQTT prevista
 
 El navegador no se conectará directamente al broker ni almacenará credenciales MQTT. Un servicio subscriber/backend recibirá los mensajes de HiveMQ, los validará y persistirá en Firebase. Topic previsto:
@@ -99,4 +105,4 @@ Formato esperado del ESP32:
 
 ## Estado actual
 
-Están implementadas las cinco pantallas, navegación responsive, selección entre baños, alertas derivadas sin duplicados, gestión local de alertas, historial simulado y preparación de servicios. Permanecen pendientes el subscriber MQTT, la persistencia en Firebase y la sustitución del proveedor mock cuando la infraestructura esté disponible.
+Están implementadas las cinco pantallas, navegación responsive, selección entre baños y alertas derivadas. Firestore comparte el estado actual y conserva lecturas históricas cuando el modo MQTT del navegador recibe publicaciones; si Firebase no está disponible se usan los mocks. Para producción permanece pendiente trasladar la suscripción MQTT a un servicio backend permanente y cerrar las escrituras públicas de las reglas provisionales.

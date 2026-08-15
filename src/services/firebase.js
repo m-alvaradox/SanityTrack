@@ -1,3 +1,6 @@
+import { getApps, initializeApp } from 'firebase/app'
+import { getFirestore } from 'firebase/firestore'
+
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -9,4 +12,6 @@ const firebaseConfig = {
 
 export const isFirebaseConfigured = Object.values(firebaseConfig).every(Boolean)
 export { firebaseConfig }
-// Firebase se inicializará aquí cuando existan credenciales y se instale su SDK.
+
+export const firebaseApp = isFirebaseConfigured ? (getApps()[0] || initializeApp(firebaseConfig)) : null
+export const firestore = firebaseApp ? getFirestore(firebaseApp) : null

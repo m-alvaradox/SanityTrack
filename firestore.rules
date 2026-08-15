@@ -1,0 +1,34 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /bathrooms/{bathroomId} {
+      allow read: if true;
+      allow create, update: if bathroomId.matches('bathroom[0-9]+')
+        && request.resource.data.people is int
+        && request.resource.data.people >= 0
+        && request.resource.data.soap_ok is bool
+        && request.resource.data.paper_ok is bool
+        && request.resource.data.air_raw is number
+        && request.resource.data.air_raw >= 0
+        && request.resource.data.high_traffic is bool;
+      allow delete: if false;
+    }
+
+    match /readings/{readingId} {
+      allow read: if true;
+      allow create, update: if request.resource.data.bathroomId.matches('bathroom[0-9]+')
+        && request.resource.data.people is int
+        && request.resource.data.people >= 0
+        && request.resource.data.soap_ok is bool
+        && request.resource.data.paper_ok is bool
+        && request.resource.data.air_raw is number
+        && request.resource.data.air_raw >= 0
+        && request.resource.data.high_traffic is bool;
+      allow delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
