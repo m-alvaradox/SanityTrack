@@ -10,7 +10,7 @@ La solución prevista separa la adquisición IoT de la interfaz:
 Sensores → ESP32 → WiFi → MQTT → HiveMQ → subscriber/backend → Firebase → aplicación web
 ```
 
-En esta etapa, la aplicación usa datos simulados detrás de `dataService`. Las páginas nunca dependen directamente del archivo mock, lo que permite reemplazar ese servicio por Firebase sin reescribir la interfaz.
+Cuando Firebase está configurado, la aplicación carga exclusivamente documentos reales de Firestore y muestra estados vacíos hasta recibir la primera lectura. `dataService` y los mocks solo se cargan dinámicamente como fallback de desarrollo cuando faltan las variables de Firebase.
 
 Para las pruebas del prototipo también existe un modo MQTT WebSocket opcional. Al activarlo, la UI escucha el broker público y conserva los mocks como estado inicial y respaldo.
 

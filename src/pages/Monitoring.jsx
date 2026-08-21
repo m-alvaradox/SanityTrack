@@ -1,4 +1,5 @@
 import { Activity, Battery, DoorOpen, Droplets, FileText, Radio, RotateCcw, Server, UserRoundCheck, Users, Wind } from 'lucide-react'
+import EmptyState from '../components/EmptyState'
 import PageIntro from '../components/PageIntro'
 import StatusBadge from '../components/StatusBadge'
 import { getAirQuality } from '../config/airQuality'
@@ -7,7 +8,8 @@ import { useApp } from '../context/sanityContext'
 import { formatDateTime } from '../utils/format'
 
 export default function Monitoring() {
-  const { selectedBathroom: b, loading, connectionStatus, mqttError, mqttLastMessageAt } = useApp(); if (loading || !b) return <div className="loading">Cargando sensores…</div>
+  const { selectedBathroom: b, loading, connectionStatus, mqttError, mqttLastMessageAt } = useApp(); if (loading) return <div className="loading">Consultando Firestore…</div>
+  if (!b) return <><PageIntro eyebrow="Datos en tiempo real" title="Esperando primera lectura" description="No se mostrarán valores simulados." /><EmptyState text="Publica un mensaje MQTT válido para crear el primer registro." /></>
   const air = getAirQuality(b.air_raw)
   const sensors = [
     { icon: Droplets, name: 'Jabón', sensor: 'TCRT5000', value: b.soap_ok ? 'Disponible' : 'No disponible', tone: b.soap_ok ? 'success' : 'danger', note: 'Detección de disponibilidad' },

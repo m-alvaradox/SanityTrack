@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { dataService } from '../services/dataService'
+import { getBathroomMetadata } from '../config/bathrooms'
+import { isFirebaseConfigured } from '../services/firebase'
 import { historyToChartData, saveBathroomReading, subscribeToFirestore } from '../services/firestoreService'
 import { subscribeToBathroom } from '../services/mqttService'
 import { deriveAlerts } from '../utils/alerts'
@@ -16,7 +17,8 @@ export function AppProvider({ children }) {
   const [mqttLastMessageAt, setMqttLastMessageAt] = useState(null)
 
   useEffect(() => {
-    Promise.all([dataService.getBathrooms(), dataService.getAlerts(), dataService.getHistory()]).then(([bathroomData, alertData, historyData]) => {
+    if (isFirebaseConfigured) return
+    import('../services/dataService').then(({ dataService }) => Promise.all([dataService.getBathrooms(), dataService.getAlerts(), dataService.getHistory()])).then(([bathroomData, alertData, historyData]) => {
       setBathrooms(bathroomData); setStoredAlerts([...deriveAlerts(bathroomData), ...alertData]); setHistory(historyData); setLoading(false)
     })
   }, [])
@@ -28,9 +30,12 @@ export function AppProvider({ children }) {
       setMqttError(null)
       setMqttLastMessageAt(sensorData.lastUpdate)
       setBathrooms((items) => {
-        const updated = items.map((bathroom) => bathroom.id === bathroomId ? { ...bathroom, ...sensorData } : bathroom)
-        const currentBathroom = items.find((bathroom) => bathroom.id === bathroomId)
-        if (currentBathroom) saveBathroomReading(bathroomId, currentBathroom, sensorData).catch((error) => setMqttError(`Firestore: ${error.message}`))
+        const currentBathroom = items.find((bathroom) => bathroom.id === bathroomId) ?? getBathroomMetadata(bathroomId)
+        const nextBathroom = { ...currentBathroom, ...sensorData }
+        const updated = items.some((bathroom) => bathroom.id === bathroomId)
+          ? items.map((bathroom) => bathroom.id === bathroomId ? nextBathroom : bathroom)
+          : [...items, nextBathroom]
+        saveBathroomReading(bathroomId, currentBathroom, sensorData).catch((error) => setMqttError(`Firestore: ${error.message}`))
         const generated = deriveAlerts(updated)
         setStoredAlerts((current) => {
           const generatedIds = new Set(generated.map((alert) => alert.id))
@@ -45,11 +50,16 @@ export function AppProvider({ children }) {
 
   useEffect(() => subscribeToFirestore({
     onBathrooms: (remoteBathrooms) => {
-      if (!remoteBathrooms.length) return
-      setBathrooms((current) => current.map((bathroom) => remoteBathrooms.find((remote) => remote.id === bathroom.id) ? { ...bathroom, ...remoteBathrooms.find((remote) => remote.id === bathroom.id) } : bathroom))
+      setBathrooms(remoteBathrooms.map((remote) => ({ ...getBathroomMetadata(remote.id), ...remote })))
+      setStoredAlerts((current) => {
+        const generated = deriveAlerts(remoteBathrooms)
+        const attended = current.filter((alert) => alert.status === 'attended')
+        return [...generated.filter((alert) => !attended.some((item) => item.id === alert.id)), ...attended]
+      })
+      setLoading(false)
     },
-    onHistory: (readings) => { if (readings.length) setHistory(historyToChartData(readings)) },
-    onError: (error) => setMqttError(`Firestore: ${error.message}`)
+    onHistory: (readings) => setHistory(historyToChartData(readings)),
+    onError: (error) => { setMqttError(`Firestore: ${error.message}`); setLoading(false) }
   }), [])
 
   const markAttended = (id) => setStoredAlerts((items) => items.map((item) => item.id === id ? { ...item, status: 'attended' } : item))
