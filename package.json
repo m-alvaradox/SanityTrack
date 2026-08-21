@@ -26,6 +26,7 @@
     "eslint-plugin-react-hooks": "latest",
     "eslint-plugin-react-refresh": "latest",
     "firebase-tools": "^15.27.0",
-    "globals": "latest"
+    "globals": "latest",
+    "vite-plugin-pwa": "^1.3.0"
   }
 }
