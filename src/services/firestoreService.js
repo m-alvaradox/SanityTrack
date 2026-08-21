@@ -39,6 +39,13 @@ export async function saveBathroomReading(bathroomId, bathroom, sensorData) {
     paper_ok: sensorData.paper_ok,
     air_raw: sensorData.air_raw,
     high_traffic: sensorData.high_traffic,
+    door_signals_window: sensorData.door_signals_window,
+    people_estimated_window: sensorData.people_estimated_window,
+    door_signals_total: sensorData.door_signals_total,
+    people_estimated_total: sensorData.people_estimated_total,
+    person_inside_pending: sensorData.person_inside_pending,
+    last_janitor_reset: sensorData.last_janitor_reset,
+    battery_v: sensorData.battery_v,
     recordedAt: serverTimestamp()
   })
 

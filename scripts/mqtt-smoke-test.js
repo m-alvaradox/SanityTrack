@@ -6,10 +6,16 @@ const topic = process.env.MQTT_TOPIC || 'espol/sanitytrack/bathroom1/data'
 const timeoutMs = 15_000
 const testId = crypto.randomUUID()
 const payload = JSON.stringify({
-  people: 5,
+  door_signals_window: 2,
+  people_estimated_window: 1,
+  door_signals_total: 38,
+  people_estimated_total: 19,
+  person_inside_pending: false,
+  last_janitor_reset: '2026-08-20 18:49:40',
   soap_ok: true,
   paper_ok: true,
   air_raw: 1750,
+  battery_v: 4.58,
   high_traffic: false,
   test_id: testId
 })

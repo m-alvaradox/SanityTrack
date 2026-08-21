@@ -93,15 +93,25 @@ Formato esperado del ESP32:
 
 ```json
 {
-  "people": 5,
+  "door_signals_window": 2,
+  "people_estimated_window": 1,
+  "door_signals_total": 38,
+  "people_estimated_total": 19,
+  "person_inside_pending": false,
+  "last_janitor_reset": "2026-08-20 18:49:40",
   "soap_ok": true,
   "paper_ok": false,
   "air_raw": 2459,
+  "battery_v": 4.58,
   "high_traffic": false
 }
 ```
 
 `air_raw` es una lectura cruda, no un valor en ppm. Los límites en `src/config/airQuality.js` son provisionales y deben calibrarse con el MQ-135 físico.
+
+La interfaz usa `people_estimated_total` como conteo acumulado desde la última atención del conserje; el valor se reinicia cuando cambia `last_janitor_reset`. `door_signals_window` indica las señales detectadas en la ventana actual y `people_estimated_window` estima las entradas/salidas derivadas de esas señales. El campo antiguo `people` continúa aceptándose para mantener compatibilidad con firmware anterior.
+
+El voltaje `battery_v` se muestra directamente, sin inventar un porcentaje de batería. `air_raw` tampoco equivale por sí solo a ppm o AQI: los estados Normal, Moderado y Requiere atención usan umbrales operativos provisionales hasta calibrar el MQ-135 instalado frente a mediciones de referencia.
 
 ## Estado actual
 
