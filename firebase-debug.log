@@ -1,0 +1,109 @@
+[debug] [2026-08-21T02:39:52.282Z] ----------------------------------------------------------------------
+[debug] [2026-08-21T02:39:52.285Z] Command:       C:\Program Files\nodejs\node.exe D:\m_alv\Github\SanityTrack\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting --project sanity-track
+[debug] [2026-08-21T02:39:52.285Z] CLI Version:   15.27.0
+[debug] [2026-08-21T02:39:52.286Z] Platform:      win32
+[debug] [2026-08-21T02:39:52.286Z] Node Version:  v24.18.0
+[debug] [2026-08-21T02:39:52.286Z] Detected Agent: codex_cli
+[debug] [2026-08-21T02:39:52.287Z] Time:          Thu Aug 20 2026 21:39:52 GMT-0500 (hora de Ecuador)
+[debug] [2026-08-21T02:39:52.287Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-08-21T02:40:46.990Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-08-21T02:40:46.991Z] > authorizing via signed-in user (m_alvaradox@hotmail.com)
+[debug] [2026-08-21T02:40:46.991Z] [iam] checking project sanity-track for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-08-21T02:40:47.007Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:47.008Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:47.010Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/sanity-track:testIamPermissions [none]
+[debug] [2026-08-21T02:40:47.010Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/sanity-track:testIamPermissions  x-goog-user-project=sanity-track
+[debug] [2026-08-21T02:40:47.010Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/sanity-track:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-08-21T02:40:47.572Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/sanity-track:testIamPermissions 200
+[debug] [2026-08-21T02:40:47.573Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/sanity-track:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-08-21T02:40:47.574Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:47.574Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:47.574Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/sanity-track [none]
+[debug] [2026-08-21T02:40:48.031Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/sanity-track 200
+[debug] [2026-08-21T02:40:48.031Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/sanity-track {"projectId":"sanity-track","projectNumber":"157033633064","displayName":"sanity-track","name":"projects/sanity-track","resources":{"hostingSite":"sanity-track"},"state":"ACTIVE","labels":{"firebase":"enabled"},"etag":"1_9f149792-582b-4972-96bb-8bbd774ddbff"}
+[info] 
+[info] === Deploying to 'sanity-track'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2026-08-21T02:40:48.037Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:48.038Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:48.038Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/sanity-track/sites/sanity-track [none]
+[debug] [2026-08-21T02:40:49.029Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/sanity-track/sites/sanity-track 200
+[debug] [2026-08-21T02:40:49.029Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/sanity-track/sites/sanity-track {"name":"projects/sanity-track/sites/sanity-track","defaultUrl":"https://sanity-track.web.app","appId":"1:157033633064:web:9711aab2ba82224887ac1d","type":"DEFAULT_SITE"}
+[debug] [2026-08-21T02:40:49.035Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:49.036Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:49.036Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/sanity-track/versions [none]
+[debug] [2026-08-21T02:40:49.037Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/sanity-track/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2026-08-21T02:40:49.685Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/sanity-track/versions 200
+[debug] [2026-08-21T02:40:49.686Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/sanity-track/versions {"name":"projects/157033633064/sites/sanity-track/versions/124928d8508b64e0","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[sanity-track]: beginning deploy... 
+[info] i  hosting[sanity-track]: found 10 files in dist 
+[debug] [2026-08-21T02:40:49.704Z] [hosting] uploading with 200 concurrency
+[debug] [2026-08-21T02:40:49.803Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:49.804Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:49.806Z] [hosting] hash cache [ZGlzdA] stored for 10 files
+[debug] [2026-08-21T02:40:49.807Z] [hosting][hash queue][FINAL] {"max":93,"min":12,"avg":22.1,"active":0,"complete":10,"success":10,"errored":0,"retried":0,"total":10,"elapsed":100}
+[debug] [2026-08-21T02:40:49.807Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/157033633064/sites/sanity-track/versions/124928d8508b64e0:populateFiles [none]
+[debug] [2026-08-21T02:40:49.808Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/157033633064/sites/sanity-track/versions/124928d8508b64e0:populateFiles {"files":{"/sw.js":"8ae5ed5b4a62bb1410b6d83ac0b4f071b545fa5bc95f753ecc0ab0762d4c2411","/manifest.webmanifest":"0e08b86ce02577a1ebf0449b8ce25eeb03ce468ad6cee80cc7f77a6e1bc9cd8f","/index.html":"b73730b1563bcfb2c88c474690f5e4c28813fcc867cd1daf2d96fe71e2b0dd5e","/workbox-9c191d2f.js":"084c08e6438a2be6eb43e07d343a476b576be68e98b0bd64a3227b201186714c","/logo.svg":"84ac75f6a4657d8b9e719560af701249ffe04d2013daa327da2ae14913d047f6","/icon.svg":"47dede2e8e6a20bb6b9b96574578fdc9146dc9c3bf65df805de70f910b45eaa2","/assets/workbox-window.prod.es5-Bd17z0YL.js":"e0de9bb50a37d056fd962b9e46427aabf2f87d4ea13021405710a1f62c0ae4cf","/assets/dataService-BNQJN1rF.js":"72f05360810ba905e3a25e83f9945cd0e71ff9c14367865636341482736e82e9","/assets/index-BubdQ2BD.css":"af23b22230d68299d84b4d282e634ccdb3ed2ddccd382e868a55913b8a5f38b0","/assets/index-DIXPU5Rk.js":"26d01561dcd71fbe325f3e05bd714fcbc5bc22eac4cc75a0069114b2f1706c07"}}
+[debug] [2026-08-21T02:40:50.193Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/157033633064/sites/sanity-track/versions/124928d8508b64e0:populateFiles 200
+[debug] [2026-08-21T02:40:50.193Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/157033633064/sites/sanity-track/versions/124928d8508b64e0:populateFiles {"uploadRequiredHashes":["b73730b1563bcfb2c88c474690f5e4c28813fcc867cd1daf2d96fe71e2b0dd5e","26d01561dcd71fbe325f3e05bd714fcbc5bc22eac4cc75a0069114b2f1706c07","8ae5ed5b4a62bb1410b6d83ac0b4f071b545fa5bc95f753ecc0ab0762d4c2411"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/sanity-track/versions/124928d8508b64e0/files"}
+[debug] [2026-08-21T02:40:50.195Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:50.195Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:50.196Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:50.196Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:50.197Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:50.197Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:50.197Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/sanity-track/versions/124928d8508b64e0/files/b73730b1563bcfb2c88c474690f5e4c28813fcc867cd1daf2d96fe71e2b0dd5e [none]
+[debug] [2026-08-21T02:40:50.198Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/sanity-track/versions/124928d8508b64e0/files/b73730b1563bcfb2c88c474690f5e4c28813fcc867cd1daf2d96fe71e2b0dd5e [stream]
+[debug] [2026-08-21T02:40:50.201Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/sanity-track/versions/124928d8508b64e0/files/26d01561dcd71fbe325f3e05bd714fcbc5bc22eac4cc75a0069114b2f1706c07 [none]
+[debug] [2026-08-21T02:40:50.201Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/sanity-track/versions/124928d8508b64e0/files/26d01561dcd71fbe325f3e05bd714fcbc5bc22eac4cc75a0069114b2f1706c07 [stream]
+[debug] [2026-08-21T02:40:50.203Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/sanity-track/versions/124928d8508b64e0/files/8ae5ed5b4a62bb1410b6d83ac0b4f071b545fa5bc95f753ecc0ab0762d4c2411 [none]
+[debug] [2026-08-21T02:40:50.204Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/sanity-track/versions/124928d8508b64e0/files/8ae5ed5b4a62bb1410b6d83ac0b4f071b545fa5bc95f753ecc0ab0762d4c2411 [stream]
+[debug] [2026-08-21T02:40:50.210Z] [hosting][populate queue][FINAL] {"max":394,"min":394,"avg":394,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":407}
+[debug] [2026-08-21T02:40:50.210Z] [hosting] uploads queued: 3
+[debug] [2026-08-21T02:40:51.244Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/sanity-track/versions/124928d8508b64e0/files/b73730b1563bcfb2c88c474690f5e4c28813fcc867cd1daf2d96fe71e2b0dd5e 200
+[debug] [2026-08-21T02:40:51.244Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/sanity-track/versions/124928d8508b64e0/files/b73730b1563bcfb2c88c474690f5e4c28813fcc867cd1daf2d96fe71e2b0dd5e [stream]
+[debug] [2026-08-21T02:40:51.303Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/sanity-track/versions/124928d8508b64e0/files/8ae5ed5b4a62bb1410b6d83ac0b4f071b545fa5bc95f753ecc0ab0762d4c2411 200
+[debug] [2026-08-21T02:40:51.303Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/sanity-track/versions/124928d8508b64e0/files/8ae5ed5b4a62bb1410b6d83ac0b4f071b545fa5bc95f753ecc0ab0762d4c2411 [stream]
+[debug] [2026-08-21T02:40:51.686Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/sanity-track/versions/124928d8508b64e0/files/26d01561dcd71fbe325f3e05bd714fcbc5bc22eac4cc75a0069114b2f1706c07 200
+[debug] [2026-08-21T02:40:51.687Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/sanity-track/versions/124928d8508b64e0/files/26d01561dcd71fbe325f3e05bd714fcbc5bc22eac4cc75a0069114b2f1706c07 [stream]
+[debug] [2026-08-21T02:40:51.687Z] [hosting][upload queue][FINAL] {"max":1492,"min":1050,"avg":1216.6666666666667,"active":0,"complete":3,"success":3,"errored":0,"retried":0,"total":3,"elapsed":1493}
+[info] i  hosting: upload complete 
+[info] +  hosting[sanity-track]: file upload complete 
+[debug] [2026-08-21T02:40:51.688Z] [hosting] deploy completed after 1999ms
+[debug] [2026-08-21T02:40:51.689Z] [
+  {
+    "config": {
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "sanity-track"
+    },
+    "version": "projects/157033633064/sites/sanity-track/versions/124928d8508b64e0"
+  }
+]
+[info] i  hosting[sanity-track]: finalizing version... 
+[debug] [2026-08-21T02:40:51.693Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:51.693Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:51.694Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/sanity-track/versions/124928d8508b64e0 updateMask=status%2Cconfig
+[debug] [2026-08-21T02:40:51.694Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/sanity-track/versions/124928d8508b64e0 {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2026-08-21T02:40:52.042Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/sanity-track/versions/124928d8508b64e0 200
+[debug] [2026-08-21T02:40:52.042Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/sanity-track/versions/124928d8508b64e0 {"name":"projects/157033633064/sites/sanity-track/versions/124928d8508b64e0","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2026-08-21T02:40:49.396265Z","createUser":{"email":"m_alvaradox@hotmail.com"},"finalizeTime":"2026-08-21T02:40:52.037032Z","finalizeUser":{"email":"m_alvaradox@hotmail.com"}}
+[debug] [2026-08-21T02:40:52.043Z] [hosting] finalized version for sanity-track:[object Object]
+[info] +  hosting[sanity-track]: version finalized 
+[info] i  hosting[sanity-track]: releasing new version... 
+[debug] [2026-08-21T02:40:52.043Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:52.044Z] Checked if tokens are valid: true, expires at: 1787283208314
+[debug] [2026-08-21T02:40:52.044Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/sanity-track/channels/live/releases versionName=projects%2F157033633064%2Fsites%2Fsanity-track%2Fversions%2F124928d8508b64e0
+[debug] [2026-08-21T02:40:52.044Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/sanity-track/channels/live/releases {}
+[debug] [2026-08-21T02:40:52.448Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/sanity-track/channels/live/releases 200
