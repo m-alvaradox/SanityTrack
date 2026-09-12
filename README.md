@@ -1,6 +1,7 @@
 # Sanity Track
 
 Sanity Track es un prototipo universitario de un sistema inteligente para monitorear y gestionar baños públicos. La aplicación presenta el estado de jabón, papel higiénico, condiciones del aire, conteo de usuarios y alertas operativas.
+<img width="1920" height="1080" alt="Presentacion - Ambientes" src="https://github.com/user-attachments/assets/98927aca-867f-4d7b-8f30-18eb76188688" />
 
 ## Arquitectura
 
